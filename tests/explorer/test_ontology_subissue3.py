@@ -155,6 +155,51 @@ def test_ontology_graph_returns_editable_schema_nodes_and_edges(client):
     )
 
 
+def test_ontology_graph_nodes_carry_entity_type_for_compact_and_full_iri_types(client):
+    graph = client.app.state.session.graph
+    full_iri_class = "http://example.org/onto-a#Organization"
+    full_iri_property = "http://example.org/onto-a#employs"
+    full_iri_ontology = "http://example.org/full-iri-onto"
+    unrecognized_external = "http://vocab.example/Widget"
+    graph.add_node(
+        full_iri_class,
+        node_type="http://www.w3.org/2002/07/owl#Class",
+        content="Organization",
+        scheme_uri="http://example.org/onto-a",
+    )
+    graph.add_node(
+        full_iri_property,
+        node_type="http://www.w3.org/2002/07/owl#ObjectProperty",
+        content="employs",
+        scheme_uri="http://example.org/onto-a",
+    )
+    graph.add_node(
+        full_iri_ontology,
+        node_type="http://www.w3.org/2002/07/owl#Ontology",
+        content="Full IRI Ontology",
+        scheme_uri="http://example.org/onto-a",
+    )
+    # An outward reference to a node whose type is outside the schema
+    # vocabulary: it must surface as "external", never "unknown"
+    graph.add_node(unrecognized_external, node_type="ex:Widget", content="Widget")
+    graph.add_edge(full_iri_property, unrecognized_external, edge_type="rdfs:range")
+
+    response = client.get(
+        "/api/ontology/graph",
+        params={"uri": "http://example.org/onto-a"},
+    )
+
+    assert response.status_code == 200
+    entity_types = {node["id"]: node["entity_type"] for node in response.json()["nodes"]}
+    assert entity_types["http://example.org/onto-a"] == "ontology"
+    assert entity_types["http://example.org/onto-a#Person"] == "class"
+    assert entity_types[full_iri_class] == "class"
+    assert entity_types["http://example.org/onto-a#name"] == "property"
+    assert entity_types[full_iri_property] == "property"
+    assert entity_types[full_iri_ontology] == "ontology"
+    assert entity_types[unrecognized_external] == "external"
+
+
 def test_ontology_graph_rejects_unregistered_namespace(client):
     response = client.get(
         "/api/ontology/graph",
