@@ -1731,9 +1731,9 @@ google-crc32c==1.8.0 \
     # via
     #   google-cloud-storage
     #   google-resumable-media
-google-genai==2.19.0 \
-    --hash=sha256:36e0326dd886b52ef765be4c46042732b46b21f637abbe060e3db7c3de23974c \
-    --hash=sha256:d8f4126643793a7de230c396bcd142d21c948c8bb57507580e152549a7a41d9d
+google-genai==2.21.0 \
+    --hash=sha256:0ecc11c6a5b9f5e3cc58e77ae5fead00c6719f8a1b2b654b803f514a9a6b64c0 \
+    --hash=sha256:36b575034be46a03acd603a852e22a6359f2cdd6b26bb1d65d9b7e0cc7ab3648
     # via semantica (pyproject.toml)
 google-resumable-media==2.10.1 \
     --hash=sha256:224975032ddb73f7ed9e2f0f4cc08ed1b06874c52d48cc8533e3eb72980b21a0 \
