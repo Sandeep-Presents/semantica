@@ -1250,9 +1250,9 @@ docling==2.119.0 \
     --hash=sha256:04b9aef29b9b94fc6e56fcd440824337d132a84074c7ba20b9cf055f220e72fb \
     --hash=sha256:3ff6f1dbe9f53ac034aca03c39fae374b381dc1eda4ad85d27a458fc13fbc917
     # via semantica (pyproject.toml)
-docling-core==2.91.0 \
-    --hash=sha256:4949a5dd77ae1daf4153c095897d3bdde1c870f2bbe401bf94d8834bef867998 \
-    --hash=sha256:dc40fe76524a2700f869265015a9ef86027888e73b5652f324b3b5c52a2df240
+docling-core==2.92.0 \
+    --hash=sha256:33fd25e38c199336447a21925374400aca13a6b9316a032f111972c2dc0f085c \
+    --hash=sha256:726d89c23197e53be2f7192bb4c00108ff545830cf9ab7b981fb014fa92b5c02
     # via
     #   docling-ibm-models
     #   docling-parse
