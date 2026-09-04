@@ -3495,9 +3495,9 @@ nbformat==5.11.0 \
     #   jupyter-server
     #   nbclient
     #   nbconvert
-neo4j==6.2.0 \
-    --hash=sha256:b87abdd13a5cc2e3bd51026926c2f20ac38fa3febe98c340520dce19e97388d0 \
-    --hash=sha256:e1e246b65b572bd8ea97f9e0e721b7d40a5ce53e53d0007c29aef63e4f9124d9
+neo4j==6.3.0 \
+    --hash=sha256:d0d3986c37ad174a549a39dfec6d22a00a061ebcb0267f1a5caf856589838e73 \
+    --hash=sha256:d243f9c8adf882ae7205a76eb2419b0a632d5f3c89383d4a0044d737a2223991
     # via semantica (pyproject.toml)
 nest-asyncio2==1.7.2 \
     --hash=sha256:1921d70b92cc4612c374928d081552efb59b83d91b2b789d935c665fa01729a8 \
